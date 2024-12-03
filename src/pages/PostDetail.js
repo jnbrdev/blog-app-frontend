@@ -8,7 +8,6 @@ export default function PostDetail() {
   const notyf = new Notyf();
   const { user } = useContext(UserContext);
   const { postId } = useParams();
-  console.log(postId);
   const navigate = useNavigate();
   const [post, setPost] = useState(null);
   const [newComment, setNewComment] = useState("");
@@ -61,7 +60,6 @@ export default function PostDetail() {
     })
     .then(res => res.json())
     .then(data => {
-        console.log(data)
 
         if(data.message === 'Comment deleted successfully'){
             notyf.success("Comment successfully deleted")

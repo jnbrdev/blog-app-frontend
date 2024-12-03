@@ -49,7 +49,6 @@ export default function MyBlogs() {
     })
     .then(res => res.json())
     .then(data => {
-        console.log(data)
 
         if(data.message === 'Post deleted successfully'){
             notyf.success("Post successfully deleted")

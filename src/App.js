@@ -34,7 +34,6 @@ function App() {
     })
     .then(res => res.json())
     .then(data => {
-      console.log(data)
 
       if (typeof data.user !== "undefined") {
 
@@ -55,8 +54,6 @@ function App() {
     }, []);
 
     useEffect(() => {
-      console.log(user);
-      console.log(localStorage);
     }, [user])
 
     return (
