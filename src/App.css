@@ -1,0 +1,299 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Futura Std', sans-serif !important;
+                                                
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.home-title {
+  font-family: 'Futura Std', sans-serif !important;
+  font-weight: 500;
+  color: #000000;
+  letter-spacing: 0.3em; /* Adjust spacing as needed */
+}
+
+.home-span {
+  color: #000000;
+  font-family: 'Futura Std', sans-serif !important;
+  font-weight: 300 !important;
+  letter-spacing: 0.3em; /* Adjust spacing as needed */
+}
+
+
+
+.navbar{
+  background-color: transparent !important;
+  color: #000000 !important;
+}
+
+.nav-button {
+  background-color: #fffefe !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  color: #000000 !important;
+  outline: none !important; /* Removes the outline */
+  border: none !important;   /* Optionally remove the border if needed */
+  border-radius: 25px !important;
+}
+
+.nav-button:focus {
+  outline: none !important;
+  color: #797979 !important;
+}
+.nav-button:hover {
+  outline: none !important;
+  color: #797979 !important;
+}
+
+
+
+.floating-label-input:focus {
+  background-color: transparent !important; /* Transparent background */
+  color: rgb(0, 0, 0) !important; /* Text color white */
+  border-color: white !important; /* Optional: white border */
+}
+
+.floating-label-label {
+  background-color: transparent !important;
+  color: rgba(0, 0, 0, 0.7); /* Initial label color */
+}
+
+.floating-label-input:focus + .floating-label-label {
+  background-color: transparent !important;
+  color: rgb(0, 0, 0) !important; /* Change label color when input is focused */
+}
+
+.floating-label {
+  background-color: transparent !important;
+  position: relative;
+}
+
+.floating-label input {
+  background-color: transparent !important;
+  color: rgb(0, 0, 0) !important;
+}
+
+.floating-label label {
+  background-color: transparent !important;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+
+
+
+/* Home */
+/* Styles for the welcome section */
+.welcome-section {
+  background-color: #eeeeee;
+  background-size: cover;
+  background-position: center;
+  min-height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+/* Card styles */
+.card-container {
+  width: 100%;
+  border: 0.5px solid #686868; /* Primary outline color */
+}
+
+.card-img-container {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+/* Author profile image */
+.author-profile {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  margin-right: 8px;
+}
+
+/* Card details column padding */
+.card-details {
+  padding: 16px;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  font-family: 'Futura Std', sans-serif !important;
+  font-weight: 300 !important;
+  display: -webkit-box;             /* Flexbox layout for text */
+  -webkit-line-clamp: 3;            /* Limit to 3 lines */
+  -webkit-box-orient: vertical;     /* Vertical layout for the box */
+  overflow: hidden;                 /* Hide the overflowed text */
+  white-space: normal;              /* Allow the text to wrap */
+}
+
+.author-info h6 {
+  margin-bottom: 0;
+}
+
+.author-info small {
+  color: #6c757d; /* Muted text color */
+}
+
+.continue-reading {
+  font-family: 'Futura Std', sans-serif !important;
+  font-weight: 300 !important;
+  cursor: pointer;
+  color: #030303; /* Default color */
+  transition: color 0.3s ease, text-decoration 0.3s ease; /* Smooth transition for underline */
+  text-decoration: underline; /* Always underline the text */
+}
+
+.continue-reading:hover {
+  color: #007bff; /* Change text color on hover */
+  text-decoration: underline; /* Keep underline on hover */
+}
+
+
+
+
+
+
+/* POST DETAIL */
+.post-detail {
+  margin-top: 20px;
+}
+
+.post-image {
+  width: 70%;
+  height: 500px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
+
+.post-title {
+  font-family: 'Futura Std', sans-serif !important;
+  font-weight: 400 !important;
+  color: #000000;
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.post-content {
+  font-family: 'Futura Std', sans-serif !important;
+  font-weight: 300 !important;
+  font-size: 1.2rem;
+  line-height: 1.8;
+}
+
+.comment-input {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.comment-button {
+  float: right;
+}
+
+.login-button {
+  width: 100%;
+}
+
+.comment-card {
+  margin-bottom: 15px;
+  padding: 10px;
+}
+
+.delete-button {
+  float: right;
+}
+
+
+
+/* Footer */
+
+footer {
+  margin-top: auto; /* This ensures footer stays at the bottom */
+}
+.footer {
+  background-color: #000000;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer a {
+  color: #f1f1f1;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.footer .footer-content p {
+  margin: 5px;
+}
+
+
+
+
+/* MY BLOG */
+.btn-post-edit {
+  background-color: transparent !important;
+  color: #0f7e21 !important;
+  padding: 0 !important;
+  outline: none !important;
+  border: none !important;
+
+}
+
+.btn-post-edit:hover {
+  color: #3c3d3d !important; /* Change text color on hover */
+}
+
+.btn-post-delete {
+  background-color: transparent !important;
+  color: #751313 !important;
+  padding: 0 !important;
+  outline: none !important;
+  border: none !important;
+  
+
+}
+
+.btn-post-delete:hover {
+  color: #3c3d3d !important; /* Change text color on hover */
+}
+
+.btn-add-post {
+  background-color: transparent !important;
+  outline: auto;
+  color: #000000 !important;
+  border-radius: 50px !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+}
+
+.btn-add-post:hover {
+  background-color: black !important;
+  outline: auto;
+  color: white !important;
+}
