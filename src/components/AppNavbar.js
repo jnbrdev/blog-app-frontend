@@ -19,23 +19,24 @@ export default function AppNavbar() {
       Blogspot
     </Navbar.Brand>
     {user.id !== null ? (
-          <>
-          <Nav.Link as={Link} to="/posts" className="">
-            My Posts
-          </Nav.Link>
-          <Dropdown align="end">
-            <Dropdown.Toggle variant="link" id="profile-dropdown" className="text-dark">
-              <FontAwesomeIcon icon={faUser} className="text-dark" />
-            </Dropdown.Toggle>
-            <Dropdown.Menu>
-              <Dropdown.Item as={NavLink} to="/logout">Logout</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-        </>
-        ) : (
-          // Other navbar links for logged-out users go here
-          <></>
-        )}
+  <>
+    <Nav.Link as={Link} to="/posts" className="">
+      {user.isAdmin === true ? "All Posts" : "My Posts"}
+    </Nav.Link>
+    <Dropdown align="end">
+      <Dropdown.Toggle variant="link" id="profile-dropdown" className="text-dark">
+        <FontAwesomeIcon icon={faUser} className="text-dark" />
+      </Dropdown.Toggle>
+      <Dropdown.Menu>
+        <Dropdown.Item as={NavLink} to="/logout">Logout</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+  </>
+) : (
+  // Other navbar links for logged-out users go here
+  <></>
+)}
+
 
     {/* Login and Register buttons outside Navbar.Collapse to always show on small screens */}
     {user.id === null && (

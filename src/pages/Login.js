@@ -52,6 +52,7 @@ export default function Login() {
       .then((data) => {
         setUser({
           id: data.user._id,
+          isAdmin: data.user.isAdmin,
         });
       });
   };

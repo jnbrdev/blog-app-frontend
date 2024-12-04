@@ -176,6 +176,29 @@ body, html {
 
 
 /* POST DETAIL */
+
+.author-post-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.author-post {
+  margin: 0;
+}
+
+.btn-post-delete {
+  background-color: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.btn-post-delete:hover {
+  opacity: 0.8;
+}
+
 .post-detail {
   margin-top: 20px;
 }

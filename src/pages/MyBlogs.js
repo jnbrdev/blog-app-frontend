@@ -6,15 +6,22 @@ import UserContext from "../context/UserContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faCommentDots, faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { Notyf } from "notyf";
+
 export default function MyBlogs() {
-    const notyf = new Notyf();
+  const notyf = new Notyf();
   const { user } = useContext(UserContext);
   const [posts, setPosts] = useState([]);
   const [searchTerm, setSearchTerm] = useState(""); // State to track the search term
   const [navigateTo, setNavigateTo] = useState(null); // State for navigation
 
   const fetchData = async () => {
-    const fetchUrl = `https://blog-app-api-anep.onrender.com/posts/getMyPosts`;
+    let fetchUrl = '';
+    if(user.isAdmin === true) {
+      fetchUrl = `https://blog-app-api-anep.onrender.com/posts/getPosts`;
+    } else {
+      fetchUrl = `https://blog-app-api-anep.onrender.com/posts/getMyPosts`;
+    }
+    
     const res = await fetch(fetchUrl, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -41,23 +48,22 @@ export default function MyBlogs() {
 
   const handleDeletePost = (postId) => {
     fetch(`https://blog-app-api-anep.onrender.com/posts/deletePost/${postId}`, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${localStorage.getItem('token')}`
-        },
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
     })
-    .then(res => res.json())
-    .then(data => {
-
-        if(data.message === 'Post deleted successfully'){
-            notyf.success("Post successfully deleted")
-            fetchData();
-        } else  {
-            notyf.error("Error deleting Post")
-            fetchData();
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.message === "Post deleted successfully") {
+          notyf.success("Post successfully deleted");
+          fetchData();
+        } else {
+          notyf.error("Error deleting Post");
+          fetchData();
         }
-    })
+      });
   };
 
   if (navigateTo) {
@@ -69,7 +75,7 @@ export default function MyBlogs() {
       {/* Section with background image and welcome message */}
       <Container className="welcome-section" fluid>
         <h3 className="home-title">
-          My Posts
+          {user.isAdmin ? "All Posts" : "My Posts"}
         </h3>
       </Container>
 
@@ -96,15 +102,17 @@ export default function MyBlogs() {
         </div>
       </Container>
 
-      {/* Add Post Button */}
-      <Container className="py-2">
-        <Button
-          onClick={() => setNavigateTo('/posts/add-post')}
-          className="d-block btn-add-post"
-        >
-          Add Post
-        </Button>
-      </Container>
+      {/* Add Post Button (Hidden if user.isAdmin is true) */}
+      {!user.isAdmin && (
+        <Container className="py-2">
+          <Button
+            onClick={() => setNavigateTo("/posts/add-post")}
+            className="d-block btn-add-post"
+          >
+            Add Post
+          </Button>
+        </Container>
+      )}
 
       {/* Posts Section */}
       <Container className="py-4">
@@ -164,23 +172,20 @@ export default function MyBlogs() {
                             className="comment-icon"
                           />
                           <span className="ms-2">{post.comments.length}</span>
+                          {!user.isAdmin && (
                           <Button
                             className="btn-post-edit mx-4"
                             onClick={() => setNavigateTo(`/posts/edit-post/${post._id}`)}
                           >
                             <FontAwesomeIcon icon={faEdit} /> Edit
                           </Button>
+                          )}
                           <Button
-                          className="btn-post-delete"
-                          onClick={() => handleDeletePost(post._id)}
+                            className="btn-post-delete mx-4"
+                            onClick={() => handleDeletePost(post._id)}
                           >
                             <FontAwesomeIcon icon={faTrashAlt} /> Delete
                           </Button>
-                        </div>
-
-                        {/* Edit and Delete Buttons */}
-                        <div className="d-flex mt-2">
-                          
                         </div>
                       </Card.Body>
                     </Col>

@@ -18,7 +18,8 @@ import EditPost from './pages/EditPost';
 function App() {
 
   const [user, setUser] = useState({
-    id: null
+    id: null,
+    isAdmin: null
   });
   const unsetUser = () => {
 
@@ -39,6 +40,7 @@ function App() {
 
         setUser({
           id: data.user._id,
+          isAdmin: data.user.isAdmin
         });
 
       } else {
